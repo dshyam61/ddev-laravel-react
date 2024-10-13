@@ -1,21 +1,15 @@
-const webpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
 const config = require('../config/webpack.dev');
-const apiUrl = process.env.REACT_APP_API_URL;
 
-const server = new webpackDevServer(webpack(config), {
-  hot: true,
-  historyApiFallback: true,
-});
+const HOST = process.env.REACT_APP_API_URL;
+const PORT = '';
 
-const PORT = 3000;
-const HOST = apiUrl;
-
-server.listen(PORT, HOST, (err) => {
+const compiler = webpack(config);
+compiler.watch({}, (err, stats) => {
   if (err) {
-    console.error(err);
-    process.exit(1); // Exit with non-zero code
+    console.error('Webpack compilation error:', err);
   } else {
-    console.log(`Server started at http://${HOST}:${PORT}`);
+    console.log(`Server started at ${HOST}:${PORT}`);
+    console.log(stats.toString());
   }
 });

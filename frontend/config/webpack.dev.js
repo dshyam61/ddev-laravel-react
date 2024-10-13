@@ -1,11 +1,16 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+const dotenv = require('dotenv');
 
+dotenv.config();
+
+const HOST = process.env.REACT_APP_API_URL;
 module.exports = merge(common, {
   mode: 'development',
+  devtool: 'eval-source-map',
   devServer: {
-    port: 3000,
-    open: true,
-    hot: true
-  }
+    hot: true,
+    inline: true,
+    host: HOST
+  },
 });

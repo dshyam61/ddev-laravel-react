@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const config = require('../config/webpack.dev');
 
 const HOST = process.env.REACT_APP_API_URL;
-const PORT = '';
+const PORT = 3000;
 
 const compiler = webpack(config);
 compiler.watch({}, (err, stats) => {

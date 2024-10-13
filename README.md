@@ -31,7 +31,7 @@ To get started with the project, follow these steps:
     * Frontend: `ddev yarn --cwd /var/www/html/frontend install && ddev yarn --cwd /var/www/html/frontend build`
     * Backend: `ddev composer install -d /var/www/html/backend`
 3. Start the development servers:
-    * Frontend: `cd frontend && npm start`
+    * Frontend: `ddev yarn --cwd /var/www/html/frontend install start`
 
 ## Contributing
 

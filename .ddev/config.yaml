@@ -21,6 +21,10 @@ web_extra_exposed_ports:
     container_port: 3000
     http_port: 2999
     https_port: 3000
+web_extra_daemons:
+  - name: "yarn-start"
+    command: "yarn start"
+    directory: /var/www/html/frontend
 
 # Key features of DDEV's config.yaml:
 

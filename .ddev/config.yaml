@@ -9,6 +9,7 @@ additional_hostnames:
     - dev.frontend
     - frontend
     - nextjs
+    - dev.nextjs
 additional_fqdns: []
 database:
     type: mysql
@@ -27,12 +28,19 @@ web_extra_exposed_ports:
     container_port: 2998
     http_port: 2997
     https_port: 2998
+  - name: nextjs-dev-nodejs
+    container_port: 2996
+    http_port: 2995
+    https_port: 2996
 web_extra_daemons:
   - name: "frontend-yarn-start"
     command: "yarn start"
     directory: /var/www/html/frontend
   - name: "nextjs-yarn-start"
-    command: "yarn run dev -p 2998 -H 0.0.0.0"
+    command: "yarn build && yarn start -p 2998 -H 0.0.0.0"
+    directory: /var/www/html/nextjs
+  - name: "nextjs-yarn-dev"
+    command: "yarn install && yarn run dev -p 2996 -H 0.0.0.0"
     directory: /var/www/html/nextjs
 
 # Key features of DDEV's config.yaml:

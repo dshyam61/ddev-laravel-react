@@ -3,6 +3,7 @@ type: php
 docroot: ""
 php_version: "8.2"
 webserver_type: nginx-fpm
+timezone: UTC
 xdebug_enabled: false
 additional_hostnames:
     - backend
